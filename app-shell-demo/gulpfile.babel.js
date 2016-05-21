@@ -30,7 +30,7 @@ import rev from 'gulp-rev';
 import sass from 'gulp-sass';
 import sequence from 'run-sequence';
 import source from 'vinyl-source-stream';
-import swPrecache from '../';
+import swPrecache from './sw-tools/sw-precache.js';
 import uglify from 'gulp-uglify';
 
 const SRC_DIR = 'src';
@@ -87,13 +87,13 @@ gulp.task('copy-third-party-sw', () => {
 gulp.task('sass', () => {
   gulp.src(`${SRC_DIR}/static/sass/*.scss`)
     .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss())
+    //.pipe(minifyCss())
     .pipe(gulp.dest(`${BUILD_DIR}/styles`));
 });
 
 gulp.task('uglify-js', () => {
   return gulp.src(`${BUILD_DIR}/js/**/*`)
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest(`${BUILD_DIR}/js`));
 });
 
